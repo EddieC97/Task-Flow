@@ -1,21 +1,30 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/tasks/task-detail.css' %}"/>
+  <link 
+    href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" 
+    rel="stylesheet" 
+  />
+  <link rel="stylesheet" href="{% static 'css/mcdp.css' %}">
+  <script 
+    src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"
+  ></script>
+  <link rel="stylesheet" href="{% static 'css/tasks/task-detail.css' %}">
 {% endblock %}
 
 {% block content %}
-<section>
+  <section>
     <h1>{{ task.name }}</h1>
     <div>
-        <h2><strong>Description:</strong> {{ task.description }}</h2>
-        <h2><strong>Date Assigned:</strong> {{ task.date }}</h2>
-        <h2><strong>Duration:</strong> {{ task.duration }} minutes</h2>
-        <h2><strong>Progress:</strong> {{ task.get_progress_display }}</h2>
-        <div>
-            <a href="{% url 'task-update' task.id %}">Edit</a>
-            <a href="{% url 'task-delete' task.id %}">Delete</a>
-        </div>
+      <h2><strong>Description:</strong> {{ task.description }}</h2>
+      <h2><strong>Date Assigned:</strong> {{ task.date }}</h2>
+      <h2><strong>Duration:</strong> {{ task.duration }} minutes</h2>
+      <h2><strong>Progress:</strong> {{ task.get_progress_display }}</h2>
+      <div>
+        <a href="{% url 'task-update' task.id %}">Edit</a>
+        <a href="{% url 'task-delete' task.id %}">Delete</a>
+      </div>
     </div>
-</section>
+  </section>
 {% endblock %}
