@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Task
 from django.http import HttpResponse
 
@@ -27,3 +27,7 @@ class TaskCreate(CreateView):
 class TaskUpdate(UpdateView):
     model = Task
     fields= '__all__'
+    
+class TaskDelete(DeleteView):
+    model = Task
+    success_url= '/tasks/'
