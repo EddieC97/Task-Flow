@@ -1,0 +1,18 @@
+{%extends 'base.html'%}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/tasks/task-index.css' %}">
+{% endblock %}
+{% block content %}
+
+<section>
+    {% for task in tasks %}
+        <h2>{{task.name}}</h2>
+        <h2>{{task.description}}</h2>
+        <h2>{{task.date}}</h2>
+        <h2>{{task.duration}}</h2>
+        <h2>{{task.progress}}</h2>
+    {% endfor %}
+</section>
+
+{% endblock %}
