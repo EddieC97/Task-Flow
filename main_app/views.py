@@ -52,8 +52,9 @@ class TaskDelete(DeleteView):
     model = Task
     success_url = "/tasks/"
 
-    # TODO 1. implement task_index + task_detail as CBV
+    # TODO 
     # TODO 2. try-catch block for better error handling
+    # TODO stretch: implement MCdatepicker 
 
 
 # * form_class - telling Django to use the custom TaskForm defined in forms.py instead of the default
