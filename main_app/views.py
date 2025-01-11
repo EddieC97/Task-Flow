@@ -25,12 +25,12 @@ def task_detail(request, task_id):
 
 class TaskCreate(CreateView):
     model = Task
-    fields = '__all__'
+    form_class = TaskForm
     
 
 class TaskUpdate(UpdateView):
     model = Task
-    fields = '__all__'
+    form_class = TaskForm
     
 class TaskDelete(DeleteView):
     model = Task
