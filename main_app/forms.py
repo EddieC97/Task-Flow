@@ -14,3 +14,7 @@ class TaskForm(forms.ModelForm):
                 }
             )
         }
+        
+# * forms.py handles the logic, validation, field customization and widgets
+
+# * task_form.html displays the form in the UI - allowing customization of the appearance and layout without affecting the logic behind the form 
