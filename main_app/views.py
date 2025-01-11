@@ -22,7 +22,7 @@ tasks = [
 ]
 
 def home(request):
-    return HttpResponse('<h1> Task Flow Home working </h1>')
+    return render(request, 'home.html')
 
 def about(request):
     return render(request, 'about.html')
