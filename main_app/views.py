@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Task
 from .forms import TaskForm
+from django.urls import reverse
 from django.http import HttpResponse
 
 
@@ -16,7 +17,7 @@ def about(request):
 def task_index(request):
     tasks = Task.objects.all()
     task_form = TaskForm()
-    return render(request, "tasks/index.html", {"tasks": tasks , "task_form":task_form})
+    return render(request, "tasks/index.html", {"tasks": tasks , 'task_form': task_form})
 
 def task_detail(request, task_id):
     task = Task.objects.get(id=task_id)
@@ -24,11 +25,12 @@ def task_detail(request, task_id):
 
 class TaskCreate(CreateView):
     model = Task
-    fields= '__all__'
+    fields = '__all__'
     
+
 class TaskUpdate(UpdateView):
     model = Task
-    fields= '__all__'
+    fields = '__all__'
     
 class TaskDelete(DeleteView):
     model = Task
