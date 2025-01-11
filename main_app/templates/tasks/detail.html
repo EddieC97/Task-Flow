@@ -3,14 +3,15 @@
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/tasks/task-detail.css' %}"/>
 {% endblock %}
+
 {% block content %}
 <section>
+    <h1>{{ task.name }}</h1>
     <div>
-        <h1>{{task.name}}</h1>
-        <h2>{{task.description}}</h2>
-        <h2>{{task.date}}</h2>
-        <h2>{{task.duration}}</h2>
-        <h2>{{task.progress}}</h2>
+        <h2><strong>Description:</strong> {{ task.description }}</h2>
+        <h2><strong>Date Assigned:</strong> {{ task.date }}</h2>
+        <h2><strong>Duration:</strong> {{ task.duration }} minutes</h2>
+        <h2><strong>Progress:</strong> {{ task.get_progress_display }}</h2>
     </div>
 </section>
 {% endblock %}
