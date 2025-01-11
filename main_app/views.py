@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Task
+from .forms import TaskForm
 from django.http import HttpResponse
 
 
@@ -14,7 +15,8 @@ def about(request):
 
 def task_index(request):
     tasks = Task.objects.all()
-    return render(request, "tasks/index.html", {"tasks": tasks})
+    task_form = TaskForm()
+    return render(request, "tasks/index.html", {"tasks": tasks , "task_form":task_form})
 
 def task_detail(request, task_id):
     task = Task.objects.get(id=task_id)
@@ -31,3 +33,6 @@ class TaskUpdate(UpdateView):
 class TaskDelete(DeleteView):
     model = Task
     success_url= '/tasks/'
+    
+    # TODO 1. implement task_index + task_detail as CBV
+    # TODO 2. try-catch block for better error handling
