@@ -8,11 +8,14 @@
 <section>
     <h1>All Tasks</h1>
     {% for task in tasks %}
+    <a href="/tasks/{{ task.id }}">
         <h2>{{task.name}}</h2>
         <h2>{{task.description}}</h2>
         <h2>{{task.date}}</h2>
         <h2>{{task.duration}}</h2>
         <h2>{{task.progress}}</h2>
+    </a>
+        
     {% endfor %}
 </section>
 
