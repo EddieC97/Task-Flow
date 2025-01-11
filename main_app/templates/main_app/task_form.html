@@ -6,7 +6,11 @@
 
 {% block content %}
 <div>
-    <h1>Add a Task</h1>
+    {% if task %}
+        <h1>Edit {{task.name}}</h1>
+    {% else %}
+        <h1>Add a Task</h1>
+    {% endif %}
 </div>
 
 <form action="" method="post">

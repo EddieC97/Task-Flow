@@ -12,6 +12,9 @@
         <h2><strong>Date Assigned:</strong> {{ task.date }}</h2>
         <h2><strong>Duration:</strong> {{ task.duration }} minutes</h2>
         <h2><strong>Progress:</strong> {{ task.get_progress_display }}</h2>
+        <div>
+            <a href="{% url 'task-update' task.id %}">Edit</a>
+        </div>
     </div>
 </section>
 {% endblock %}

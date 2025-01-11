@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from .models import Task
 from django.http import HttpResponse
 
@@ -24,3 +24,6 @@ class TaskCreate(CreateView):
     model = Task
     fields= '__all__'
     
+class TaskUpdate(UpdateView):
+    model = Task
+    fields= '__all__'
