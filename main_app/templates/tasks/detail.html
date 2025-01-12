@@ -30,7 +30,13 @@
         {% for tag in task.tags.all %}
           <div>
             <div style="background-color: {{ tag.color }}"></div>
-            <p>{{ tag.color }} {{ tag.name }}</p>
+            <a href="{% url 'tag-detail' tag.id %}">
+              <p>{{ tag.color }} {{ tag.name }}</p>
+            </a>
+            <form action="{% url 'remove-tag' task.id tag.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit">Remove Tag</button>
+            </form>
           </div>
         {% endfor %}
       {% else %}
@@ -44,7 +50,9 @@
         {% for tag in tags %}
           <div>
             <div style="background-color: {{ tag.color }}"></div>
-            <p>{{ tag.color }} {{ tag.name }}</p>
+            <a href="{% url 'tag-detail' tag.id %}">
+              <p>{{ tag.color }} {{ tag.name }}</p>
+            </a>
             <form action="{% url 'associate-tag' task.id tag.id %}" method="post">
               {% csrf_token %}
               <button type="submit">Give Tag</button>

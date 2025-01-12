@@ -14,7 +14,8 @@ urlpatterns = [
     path('tags/<int:pk>/', views.TagDetail.as_view(), name='tag-detail'),
     path('tags/<int:pk>/update/', views.TagUpdate.as_view(), name='tag-update'),
     path('tags/<int:pk>/delete/', views.TagDelete.as_view(), name='tag-delete'),
-    path('tasks/<int:task_id>/associate-tag/<int:tag_id>/', views.associate_tag, name='associate-tag')
+    path('tasks/<int:task_id>/associate-tag/<int:tag_id>/', views.associate_tag, name='associate-tag'), 
+    path('tasks/<int:task_id>/remove-tag/<int:tag_id>/', views.remove_tag, name='remove-tag')
     
     
     
