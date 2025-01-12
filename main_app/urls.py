@@ -13,6 +13,7 @@ urlpatterns = [
     path('tags/', views.TagList.as_view(), name='tag-index'),
     path('tags/<int:pk>/', views.TagDetail.as_view(), name='tag-detail'),
     path('tags/<int:pk>/update/', views.TagUpdate.as_view(), name='tag-update'),
+    path('tags/<int:pk>/delete/', views.TagDelete.as_view(), name='tag-delete'),
     
     
     

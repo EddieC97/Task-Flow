@@ -65,6 +65,10 @@ class TagUpdate(UpdateView):
     model = Tag
     fields = ['name', 'color']
     
+class TagDelete(DeleteView):
+    model = Tag 
+    success_url ='/tags/'
+    
 
     # TODO 
     # TODO 2. try-catch block for better error handling
