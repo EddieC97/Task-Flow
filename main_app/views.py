@@ -8,11 +8,11 @@ from django.http import HttpResponse
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 
 
 class Home(LoginView):
     template_name = 'home.html'
-
 
 
 def about(request):
@@ -90,17 +90,21 @@ class TagDelete(DeleteView):
     model = Tag 
     success_url ='/tags/'
 
+@login_required
 def associate_tag(request, task_id, tag_id):
     task = Task.objects.get(id=task_id)
     tag = Tag.objects.get(id=tag_id)
     task.tags.add(tag)
     return redirect('task-detail', pk=task.id)
 
+
+@login_required
 def remove_tag(request, task_id, tag_id):
     task = Task.objects.get(id=task_id)
     tag = Tag.objects.get(id=tag_id)
     task.tags.remove(tag)
     return redirect("task-detail", pk=task.id)
+
 
 def signup(request):
     error_message = ''
