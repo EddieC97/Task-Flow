@@ -36,6 +36,13 @@ class TaskDetail(DetailView):
     template_name = "tasks/detail.html"
     context_object_name = "task"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['tags'] = Tag.objects.all()
+
+        return context
+
 
 class TaskCreate(CreateView):
     model = Task
@@ -54,25 +61,25 @@ class TaskDelete(DeleteView):
 class TagCreate(CreateView):
     model = Tag
     fields = '__all__'
-    
+
 class TagList(ListView):
     model = Tag
-    
+
 class TagDetail(DetailView):
     model = Tag
-    
+
 class TagUpdate(UpdateView):
     model = Tag
     fields = ['name', 'color']
-    
+
 class TagDelete(DeleteView):
     model = Tag 
     success_url ='/tags/'
-    
 
-    # TODO 
+    # TODO
     # TODO 2. try-catch block for better error handling
-    # TODO stretch: implement MCdatepicker 
+    # TODO stretch: implement MCdatepicker
+    # TODO- write more comments on get_context_data ( line 39)
 
 
 # * form_class - telling Django to use the custom TaskForm defined in forms.py instead of the default

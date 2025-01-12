@@ -19,4 +19,22 @@
       </div>
     </div>
   </section>
+
+  <section>
+    <div>
+      <h2>Tags</h2>
+    </div>
+    <h2>Available Tags</h2>
+    <div>
+      {% for tag in tags %}
+      <div>
+        <p>{{tag.color}} {{tag.name}}</p>
+        <form action="" method="post">
+          {% csrf_token %}
+          <button type="submit"> Give Tag </button>
+        </form>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
 {% endblock %}
