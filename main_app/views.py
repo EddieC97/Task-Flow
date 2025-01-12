@@ -5,10 +5,12 @@ from .models import Task, Tag
 from .forms import TaskForm
 from django.urls import reverse
 from django.http import HttpResponse
+from django.contrib.auth.views import LoginView
 
 
-def home(request):
-    return render(request, "home.html")
+class Home(LoginView):
+    template_name = 'home.html'
+
 
 
 def about(request):
