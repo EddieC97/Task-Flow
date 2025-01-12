@@ -89,10 +89,6 @@ class TagList(LoginRequiredMixin, ListView):
         return Tag.objects.filter(user=self.request.user)
 
 
-
-
-
-
 class TagDetail(LoginRequiredMixin, DetailView):
     model = Tag
 
@@ -151,13 +147,16 @@ def signup(request):
     # TODO stretch: implement MCdatepicker
 
 
-
 # * form_class - telling Django to use the custom TaskForm defined in forms.py instead of the default
 # ~ we use this when we need to customize the form beyond what Django's default form generation can handle
 
-#* get_queryset() is used in ListView to retrieve a collection of objects. It filters, modify or customizes the list of objects that will be passed to the template 
-# ~ For TaskList, get_queryset() helps filter and return all tasks associated with the current logged-in user 
+# * get_queryset() is used in ListView to retrieve a collection of objects. It filters, modify or customizes the list of objects that will be passed to the template
+# ~ For TaskList, get_queryset() helps filter and return all tasks associated with the current logged-in user
+# ! get_queryset() is used to filter multiple objects: like in ListView, DeleteView and UpdateView
 
-#* get_context_data() is used in DetailView to get the data for a single object, plus any additional context that you want to pass to the template 
-#~ For TaskDetail, get_context_data adds additional tags to the context, excluding those already associated with the task, and filtering them by the current user 
-#? the TaskDetail view automatically retrieves the task object using get_object() that is built in DetailView, then get_context_data() us where you can add extra context for the template
+# * get_context_data() is used in DetailView to get the data for a single object, plus any additional context that you want to pass to the template
+# ~ For TaskDetail, get_context_data adds additional tags to the context, excluding those already associated with the task, and filtering them by the current user
+# ? the TaskDetail view automatically retrieves the task object using get_object() that is built in DetailView, then get_context_data() us where you can add extra context for the template
+#! get_context_data() is used to add extra information to the context for the template: usually used in DetailView
+
+# & for more info:https://docs.djangoproject.com/en/5.1/topics/class-based-views/generic-display/
