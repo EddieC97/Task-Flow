@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User 
 
 COLOR_CHOICES = (
     ("#FFFFFF", "White"),
@@ -43,6 +44,7 @@ class Task(models.Model):
     duration= models.IntegerField()
     progress=  models.CharField(max_length=2, choices=STATUS, default=STATUS[0][0])
     tags = models.ManyToManyField(Tag)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
