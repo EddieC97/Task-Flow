@@ -11,6 +11,7 @@ urlpatterns = [
     path('tasks/<int:pk>/delete/', views.TaskDelete.as_view(), name='task-delete'), 
     path('tags/create/', views.TagCreate.as_view(), name='tag-create'),
     path('tags/', views.TagList.as_view(), name='tag-index'),
+    path('tags/<int:pk>/', views.TagDetail.as_view(), name='tag-detail'),
     
     
 ]

@@ -9,12 +9,12 @@
     {% for tag in tag_list %}
         <div class="card" style="border-color: {{ tag.color }}">
             <div class="card-bg" style="background-color: {{ tag.color }}"></div>
-            {% comment %} <a href="{% url 'tag-detail' tag.id %}"> {% endcomment %}
+            <a href="{% url 'tag-detail' tag.id %}">
                 <div class="card-content">
                     <h2>{{ tag.name }}</h2>
                     <p>A {{ tag.color }} tag</p>
                 </div>
-            {% comment %} </a> {% endcomment %}
+            </a>
         </div>
     {% endfor %}
 </section>

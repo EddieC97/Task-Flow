@@ -58,6 +58,9 @@ class TagCreate(CreateView):
 class TagList(ListView):
     model = Tag
     
+class TagDetail(DetailView):
+    model = Tag
+    
 
     # TODO 
     # TODO 2. try-catch block for better error handling
