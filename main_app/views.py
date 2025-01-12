@@ -149,9 +149,15 @@ def signup(request):
     # TODO
     # TODO 2. try-catch block for better error handling
     # TODO stretch: implement MCdatepicker
-    # TODO- write more comments on get_context_data ( line 39)
-    # TODO- write more comments on get_queryset (line 27)
+
 
 
 # * form_class - telling Django to use the custom TaskForm defined in forms.py instead of the default
 # ~ we use this when we need to customize the form beyond what Django's default form generation can handle
+
+#* get_queryset() is used in ListView to retrieve a collection of objects. It filters, modify or customizes the list of objects that will be passed to the template 
+# ~ For TaskList, get_queryset() helps filter and return all tasks associated with the current logged-in user 
+
+#* get_context_data() is used in DetailView to get the data for a single object, plus any additional context that you want to pass to the template 
+#~ For TaskDetail, get_context_data adds additional tags to the context, excluding those already associated with the task, and filtering them by the current user 
+#? the TaskDetail view automatically retrieves the task object using get_object() that is built in DetailView, then get_context_data() us where you can add extra context for the template
