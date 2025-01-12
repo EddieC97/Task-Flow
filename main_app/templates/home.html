@@ -8,7 +8,7 @@
 <secttion>
     <p>Welcome to the home page</p>
 </secttion>
-
+{% if not user.is_authenticated %}
 <section>
     <form action="{% url 'home' %}" method="post">
         <h1>Login</h1>
@@ -18,5 +18,6 @@
         <button type="submit">Login</button>
     </form>
 </section>
+{% endif %}
 
 {% endblock %}
