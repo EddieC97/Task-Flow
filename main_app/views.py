@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Task
+from .models import Task, Tag
 from .forms import TaskForm
 from django.urls import reverse
 from django.http import HttpResponse
@@ -51,6 +51,11 @@ class TaskUpdate(UpdateView):
 class TaskDelete(DeleteView):
     model = Task
     success_url = "/tasks/"
+
+class TagCreate(CreateView):
+    model = Tag
+    fields = '__all__'
+    
 
     # TODO 
     # TODO 2. try-catch block for better error handling
