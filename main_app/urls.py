@@ -18,6 +18,4 @@ urlpatterns = [
     path('tasks/<int:task_id>/remove-tag/<int:tag_id>/', views.remove_tag, name='remove-tag'),
     path('accounts/signup/', views.signup, name='signup')
     
-    
-    
 ]

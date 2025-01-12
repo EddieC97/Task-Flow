@@ -22,6 +22,8 @@ class Tag(models.Model):
     color = models.CharField(
         max_length=8, choices=COLOR_CHOICES, default=COLOR_CHOICES[0][0]
     )
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.name

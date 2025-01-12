@@ -47,8 +47,8 @@ class TaskDetail(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        tags_task_doesnt_have = Tag.objects.exclude(id__in=self.object.tags.all().values_list('id'))
-
+        tags_task_doesnt_have = Tag.objects.exclude(id__in=self.object.tags.all().values_list('id')).filter(user=self.request.user)
+        
         context['tags'] = tags_task_doesnt_have
 
         return context
@@ -75,39 +75,59 @@ class TaskDelete(LoginRequiredMixin, DeleteView):
 
 class TagCreate(LoginRequiredMixin, CreateView):
     model = Tag
-    fields = '__all__'
+    fields = ['name', 'color']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 class TagList(LoginRequiredMixin, ListView):
     model = Tag
 
+    def get_queryset(self):
+        return Tag.objects.filter(user=self.request.user)
+
+
+
+
+
 
 class TagDetail(LoginRequiredMixin, DetailView):
     model = Tag
+
+    def get_queryset(self):
+        return Tag.objects.filter(user=self.request.user)
 
 
 class TagUpdate(LoginRequiredMixin, UpdateView):
     model = Tag
     fields = ['name', 'color']
 
+    def get_queryset(self):
+        return Tag.objects.filter(user=self.request.user)
+
 
 class TagDelete(LoginRequiredMixin, DeleteView):
     model = Tag 
     success_url ='/tags/'
 
+    def get_queryset(self):
+        return Tag.objects.filter(user=self.request.user)
+
 
 @login_required
 def associate_tag(request, task_id, tag_id):
-    task = Task.objects.get(id=task_id)
-    tag = Tag.objects.get(id=tag_id)
+    task = Task.objects.get(id=task_id, user=request.user)
+    tag = Tag.objects.get(id=tag_id, user=request.user)
     task.tags.add(tag)
     return redirect('task-detail', pk=task.id)
 
 
 @login_required
 def remove_tag(request, task_id, tag_id):
-    task = Task.objects.get(id=task_id)
-    tag = Tag.objects.get(id=tag_id)
+    task = Task.objects.get(id=task_id, user=request.user)
+    tag = Tag.objects.get(id=tag_id, user=request.user)
     task.tags.remove(tag)
     return redirect("task-detail", pk=task.id)
 
