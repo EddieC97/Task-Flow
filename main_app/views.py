@@ -6,6 +6,8 @@ from .forms import TaskForm
 from django.urls import reverse
 from django.http import HttpResponse
 from django.contrib.auth.views import LoginView
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 
 
 class Home(LoginView):
@@ -95,6 +97,20 @@ def remove_tag(request, task_id, tag_id):
     tag = Tag.objects.get(id=tag_id)
     task.tags.remove(tag)
     return redirect("task-detail", pk=task.id)
+
+def signup(request):
+    error_message = ''
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('task-index')
+        else:
+            error_message = 'Invalid sign up - try again'
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'signup.html', context)
 
     # TODO
     # TODO 2. try-catch block for better error handling
