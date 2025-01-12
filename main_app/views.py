@@ -51,6 +51,10 @@ class TaskDetail(DetailView):
 class TaskCreate(CreateView):
     model = Task
     form_class = TaskForm
+    
+    def form_valid(self,form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 class TaskUpdate(UpdateView):
