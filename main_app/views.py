@@ -24,6 +24,10 @@ class TaskList(ListView):
     template_name = "tasks/index.html"
     context_object_name = "tasks"
 
+    def get_queryset(self):
+        return Task.objects.filter(user=self.request.user)
+        
+
     extra_context = {"task_form": TaskForm()}
 
     # * template_name is useful because by default, Django wil look for a template named task_list.html (following the convention modelname_list.html)
@@ -116,6 +120,7 @@ def signup(request):
     # TODO 2. try-catch block for better error handling
     # TODO stretch: implement MCdatepicker
     # TODO- write more comments on get_context_data ( line 39)
+    # TODO- write more comments on get_queryset (line 27)
 
 
 # * form_class - telling Django to use the custom TaskForm defined in forms.py instead of the default
