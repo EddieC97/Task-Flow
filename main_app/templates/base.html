@@ -13,11 +13,16 @@
     <header>
         <nav>
             <ul>
-                <li><a href="{% url 'task-index' %}">All tasks</a></li>
-                <li><a href="{% url 'tag-index' %}">All Tags</a></li>
-                <li><a href="{% url 'task-create' %}">Add a task</a></li>
-                <li><a href="{% url 'tag-create' %}">Add a Tag</a></li>
-                <li><a href="{% url 'about'%}">About</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'task-index' %}">All tasks</a></li>
+                    <li><a href="{% url 'tag-index' %}">All Tags</a></li>
+                    <li><a href="{% url 'task-create' %}">Add a task</a></li>
+                    <li><a href="{% url 'tag-create' %}">Add a Tag</a></li>
+                    <li><a href="{% url 'about'%}">About</a></li>
+                {% else %}
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'home' %}">Login</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>
