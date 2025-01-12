@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/tags/tag-index.css' %}" />
+{% endblock %}
+{% block content %}
+
+<section>
+    {% for tag in tag_list %}
+        <div style="border-color: {{ tag.color }}">
+        <div style="background-color: {{ tag.color }}"></div>
+        {% comment %} <a href="{% url 'tag-detail' tag.id %}"> {% endcomment %}
+            <div>
+            <h2>{{ tag.name }}</h2>
+            <p>A {{ tag.color }} tag</p>
+            </div>
+        {% comment %} </a> {% endcomment %}
+        </div>
+{% endfor %}
+</section>
+
+{% endblock %}

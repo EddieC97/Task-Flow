@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Task, Tag
 from .forms import TaskForm
@@ -55,6 +54,9 @@ class TaskDelete(DeleteView):
 class TagCreate(CreateView):
     model = Tag
     fields = '__all__'
+    
+class TagList(ListView):
+    model = Tag
     
 
     # TODO 
