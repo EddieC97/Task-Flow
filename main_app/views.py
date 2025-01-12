@@ -38,8 +38,10 @@ class TaskDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        
+        tags_task_doesnt_have = Tag.objects.exclude(id__in=self.object.tags.all().values_list('id'))
 
-        context['tags'] = Tag.objects.all()
+        context['tags'] = tags_task_doesnt_have
 
         return context
 
