@@ -75,6 +75,10 @@ class TagUpdate(UpdateView):
 class TagDelete(DeleteView):
     model = Tag 
     success_url ='/tags/'
+    
+def associate_tag(request, task_id, tag_id):
+    Task.objects.get(id=task_id).tags.add(tag_id)
+    return redirect('task-detail', task_id=task_id)
 
     # TODO
     # TODO 2. try-catch block for better error handling

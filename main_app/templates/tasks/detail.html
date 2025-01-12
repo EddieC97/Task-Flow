@@ -24,17 +24,36 @@
     <div>
       <h2>Tags</h2>
     </div>
-    <h2>Available Tags</h2>
+    <h3>{{ task.name }}'s Tags</h3>
     <div>
-      {% for tag in tags %}
-      <div>
-        <p>{{tag.color}} {{tag.name}}</p>
-        <form action="" method="post">
-          {% csrf_token %}
-          <button type="submit"> Give Tag </button>
-        </form>
-      </div>
-      {% endfor %}
+      {% if task.tags.count %}
+        {% for tag in task.tags.all %}
+          <div>
+            <div style="background-color: {{ tag.color }}"></div>
+            <p>{{ tag.color }} {{ tag.name }}</p>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>{{ task.name }} doesn't have any tags!</p>
+      {% endif %}
+    </div>
+
+    <h3>Available Tags</h3>
+    <div>
+      {% if tags %}
+        {% for tag in tags %}
+          <div>
+            <div style="background-color: {{ tag.color }}"></div>
+            <p>{{ tag.color }} {{ tag.name }}</p>
+            <form action="{% url 'associate-tag' task.id tag.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit">Give Tag</button>
+            </form>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>No available tags!</p>
+      {% endif %}
     </div>
   </section>
 {% endblock %}
