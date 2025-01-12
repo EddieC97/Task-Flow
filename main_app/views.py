@@ -61,6 +61,10 @@ class TagList(ListView):
 class TagDetail(DetailView):
     model = Tag
     
+class TagUpdate(UpdateView):
+    model = Tag
+    fields = ['name', 'color']
+    
 
     # TODO 
     # TODO 2. try-catch block for better error handling
