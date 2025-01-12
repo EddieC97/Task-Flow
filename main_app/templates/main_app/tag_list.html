@@ -5,18 +5,18 @@
 {% endblock %}
 {% block content %}
 
-<section>
+<section class="card-container">
     {% for tag in tag_list %}
-        <div style="border-color: {{ tag.color }}">
-        <div style="background-color: {{ tag.color }}"></div>
-        {% comment %} <a href="{% url 'tag-detail' tag.id %}"> {% endcomment %}
-            <div>
-            <h2>{{ tag.name }}</h2>
-            <p>A {{ tag.color }} tag</p>
-            </div>
-        {% comment %} </a> {% endcomment %}
+        <div class="card" style="border-color: {{ tag.color }}">
+            <div class="card-bg" style="background-color: {{ tag.color }}"></div>
+            {% comment %} <a href="{% url 'tag-detail' tag.id %}"> {% endcomment %}
+                <div class="card-content">
+                    <h2>{{ tag.name }}</h2>
+                    <p>A {{ tag.color }} tag</p>
+                </div>
+            {% comment %} </a> {% endcomment %}
         </div>
-{% endfor %}
+    {% endfor %}
 </section>
 
 {% endblock %}
