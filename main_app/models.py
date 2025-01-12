@@ -26,17 +26,17 @@ class Task(models.Model):
     # ~ using 'pk' ensures consistency with Django's conventions and avoids unnecessary complexity
 
 COLOR_CHOICES = (
-    ("White", "#FFFFFF"),
-    ("Red", "#FF5733"),
-    ("Orange", "#FF8C00"),
-    ("Yellow", "#FFD700"),
-    ("Green", "#4CAF50"),
-    ("Blue", "#2196F3"),
-    ("Purple", "#9C27B0"),
-    ("Pink", "#E91E63"),
-    ("Cyan", "#00BCD4"),
-    ("Indigo", "#3F51B5"),
-    ("Lime", "#FFEB3B"),
+    ("#FFFFFF", "White"),
+    ("#FF5733", "Red"),
+    ("#FF8C00", "Orange"),
+    ("#FFD700", "Yellow"),
+    ("#4CAF50", "Green"),
+    ("#2196F3", "Blue"),
+    ("#9C27B0", "Purple"),
+    ("#E91E63", "Pink"),
+    ("#00BCD4", "Cyan"),
+    ("#3F51B5", "Indigo"),
+    ("#FFEB3B", "Lime"),
 )
 
 class Tag(models.Model):
