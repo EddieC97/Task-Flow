@@ -9,6 +9,7 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class Home(LoginView):
@@ -19,14 +20,13 @@ def about(request):
     return render(request, "about.html")
 
 
-class TaskList(ListView):
+class TaskList(LoginRequiredMixin,ListView):
     model = Task
     template_name = "tasks/index.html"
     context_object_name = "tasks"
 
     def get_queryset(self):
         return Task.objects.filter(user=self.request.user)
-        
 
     extra_context = {"task_form": TaskForm()}
 
@@ -39,14 +39,14 @@ class TaskList(ListView):
     # * extra_context - a simple way to add extra context to the template, usually for static value like a form
 
 
-class TaskDetail(DetailView):
+class TaskDetail(LoginRequiredMixin, DetailView):
     model = Task
     template_name = "tasks/detail.html"
     context_object_name = "task"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        
+
         tags_task_doesnt_have = Tag.objects.exclude(id__in=self.object.tags.all().values_list('id'))
 
         context['tags'] = tags_task_doesnt_have
@@ -54,41 +54,47 @@ class TaskDetail(DetailView):
         return context
 
 
-class TaskCreate(CreateView):
+class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
     form_class = TaskForm
-    
+
     def form_valid(self,form):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
 
-class TaskUpdate(UpdateView):
+class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
     form_class = TaskForm
 
 
-class TaskDelete(DeleteView):
+class TaskDelete(LoginRequiredMixin, DeleteView):
     model = Task
     success_url = "/tasks/"
 
-class TagCreate(CreateView):
+
+class TagCreate(LoginRequiredMixin, CreateView):
     model = Tag
     fields = '__all__'
 
-class TagList(ListView):
+
+class TagList(LoginRequiredMixin, ListView):
     model = Tag
 
-class TagDetail(DetailView):
+
+class TagDetail(LoginRequiredMixin, DetailView):
     model = Tag
 
-class TagUpdate(UpdateView):
+
+class TagUpdate(LoginRequiredMixin, UpdateView):
     model = Tag
     fields = ['name', 'color']
 
-class TagDelete(DeleteView):
+
+class TagDelete(LoginRequiredMixin, DeleteView):
     model = Tag 
     success_url ='/tags/'
+
 
 @login_required
 def associate_tag(request, task_id, tag_id):
