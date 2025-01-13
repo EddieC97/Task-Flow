@@ -41,39 +41,84 @@ class TaskList(LoginRequiredMixin,ListView):
 
     # * extra_context - a simple way to add extra context to the template, usually for static value like a form
 
+
 def weekly_view(request):
-    
-    now_param = request.GET.get('now')
-    
+
+    now_param = request.GET.get("now")
     if now_param:
-        selected_date = timezone.datetime.fromisoformat(now_param)
-    
+        selected_date = parse_date(now_param)
     else:
-        selected_date = timezone.now()
-        
-    if 'previous' in request.GET:
+        selected_date = timezone.now().date()
+
+    # * this gets the now query parameter in the URL
+    # * if a user just navigated to the page from another page then it will use the timezone.now().date() because the URL will just be http://127.0.0.1:8000/tasks/weeklyview/
+    # ~ if a user used the previous Week/ Current Week / or Next Week links then it will be http://127.0.0.1:8000/tasks/weeklyview/?now=2025-01-13 so parse_date will then extract 2025-01-13 into a string then convert it back to date object
+
+    start_of_week = selected_date - timedelta(days=selected_date.weekday())  
+    end_of_week = start_of_week + timedelta(days=6) 
+
+    # ~ weekday method is a built-in method of Python
+    # * selected_date.weekday() returns an integer representing the day of the week
+    # * selected_date.weekday() is used to find out haw many days has passed since the last Monday
+    # * values returned by selected_date.weekday() 0: Monday | 1: Tuesday | 2: Wednesday | 3: Thursday |4: Friday | 5: Saturday |6: Sunday
+
+    # ? Example: If selected_date is 2025-01-15 (Wednesday):
+    # ? 1. selected_date.weekday() returns 2 (Wednesday).
+    # ? 2. Subtract 2 days from selected_date to get start_of_week (Monday): 2025-01-13.
+    # ? 3. Add 6 days to start_of_week to get end_of_week (Sunday): 2025-01-19.
+
+    if "previous" in request.GET:
         selected_date -= timedelta(days=7)
-    
-    if 'next' in request.GET:
+        start_of_week = selected_date - timedelta(days=selected_date.weekday())
+        end_of_week = start_of_week + timedelta(days=6)
+
+    elif "next" in request.GET:
         selected_date += timedelta(days=7)
-        
+        start_of_week = selected_date - timedelta(days=selected_date.weekday())
+        end_of_week = start_of_week + timedelta(days=6)
 
-    
-    start_of_week = selected_date.date() - timedelta(days=selected_date.weekday()) # * This gets the Monday
-    
-    end_of_week = start_of_week + timedelta(days=6) #* This gets the Sunday
-    
+    elif "current" in request.GET:
+        selected_date = timezone.now().date()  
+        start_of_week = selected_date - timedelta(days=selected_date.weekday())
+        end_of_week = start_of_week + timedelta(days=6)
+
+    # * just wanted to calculate this so I can pass it to the html form
+    monday = start_of_week
+    tuesday = monday + timedelta(days=1)
+    wednesday = monday + timedelta(days=2)
+    thursday = monday + timedelta(days=3)
+    friday = monday + timedelta(days=4)
+    saturday = monday + timedelta(days=5)
+    sunday = monday + timedelta(days=6)
+
+    # * This just gets tasks for the week based on the start and end of the week
     tasks_for_week = Task.objects.filter(date__gte=start_of_week, date__lte=end_of_week)
-    
-    print(tasks_for_week)
-    
-    
-    return render(request, 'tasks/weeklyview.html', {
-        'tasks': tasks_for_week, 
-        'week_start': start_of_week,
-        'week_end': end_of_week
-    })
 
+    prev_week = (start_of_week - timedelta(weeks=1)).strftime("%Y-%m-%d")
+    next_week = (start_of_week + timedelta(weeks=1)).strftime("%Y-%m-%d")
+    current_week = timezone.now().date().strftime("%Y-%m-%d")
+
+    # * strftime("%Y-%m-%d") method is used to convert the date into a string so it can be passed into URLs so now the parse_date can work 
+
+    return render(
+        request,
+        "tasks/weeklyview.html",
+        {
+            "tasks": tasks_for_week,
+            "start_of_week": start_of_week,
+            "end_of_week": end_of_week,
+            "monday": monday,
+            "tuesday": tuesday,
+            "wednesday": wednesday,
+            "thursday": thursday,
+            "friday": friday,
+            "saturday": saturday,
+            "sunday": sunday,
+            "prev_week": prev_week,
+            "next_week": next_week,
+            "current_week": current_week,
+        },
+    )
 
 
 class TaskDetail(LoginRequiredMixin, DetailView):
@@ -117,7 +162,6 @@ class TagCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
-
 
 
 class TagList(LoginRequiredMixin, ListView):

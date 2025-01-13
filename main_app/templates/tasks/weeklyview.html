@@ -2,16 +2,83 @@
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/tasks/weeklyview.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/tasks/weeklyview.css' %}"/>
 {% endblock %}
 
 {% block content %}
-
-<p>weekly view working</p>
-
-<p>
-    <a href="?now={{ week_start|date:'Y-m-d' }}&previous=true">Previous Week</a> |
-    <a href="?now={{ week_start|date:'Y-m-d' }}&next=true">Next Week</a>
-</p>
-
+    <h1>Tasks for the Week: {{ start_of_week|date:'d/m/Y' }} - {{ end_of_week|date:'d/m/Y' }}</h1>
+    {% comment %} * |date:'d/m/Y' is a filter so it will format the start_of_week date object according to the filter that we want  {% endcomment %}
+    <p>
+        <a href="?now={{ prev_week }}">Previous Week</a> |
+        <a href="?now={{ current_week }}">Current Week</a> |
+        <a href="?now={{ next_week }}">Next Week</a>
+    </p>
+{% comment %} * the monday/ rest of the day will be in the format of (2025,1,13) so | date'l' is a filter to display the full name of the day   {% endcomment %}
+    <table>
+        <thead>
+            <tr>
+                <th>{{ monday|date:'l' }}<br>{{ monday|date:'d/m/Y' }}</th>
+                <th>{{ tuesday|date:'l' }}<br>{{ tuesday|date:'d/m/Y' }}</th>
+                <th>{{ wednesday|date:'l' }}<br>{{ wednesday|date:'d/m/Y' }}</th>
+                <th>{{ thursday|date:'l' }}<br>{{ thursday|date:'d/m/Y' }}</th>
+                <th>{{ friday|date:'l' }}<br>{{ friday|date:'d/m/Y' }}</th>
+                <th>{{ saturday|date:'l' }}<br>{{ saturday|date:'d/m/Y' }}</th>
+                <th>{{ sunday|date:'l' }}<br>{{ sunday|date:'d/m/Y' }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    {% for task in tasks %}
+                    {% if task.date == monday %}
+                    {% comment %} * this checks if the date from task and date from monday from weeklyview is the same. if it is the same then place it here  {% endcomment %}
+                            <p>{{ task.name }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for task in tasks %}
+                        {% if task.date == tuesday %}
+                            <p>{{ task.name }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for task in tasks %}
+                        {% if task.date == wednesday %}
+                            <p>{{ task.name }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for task in tasks %}
+                        {% if task.date == thursday %}
+                            <p>{{ task.name }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for task in tasks %}
+                        {% if task.date == friday %}
+                            <p>{{ task.name }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for task in tasks %}
+                        {% if task.date == saturday %}
+                            <p>{{ task.name }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for task in tasks %}
+                        {% if task.date == sunday %}
+                            <p>{{ task.name }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
 {% endblock %}
