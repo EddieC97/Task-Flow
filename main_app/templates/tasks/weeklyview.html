@@ -51,7 +51,7 @@
                     <ol>
                         {% for task in tasks %}
                             {% if task.date == monday %}
-                                <li>{{ task.name }}</li>
+                                <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
                             {% endif %}
                         {% endfor %}
                     </ol>
@@ -60,7 +60,7 @@
                     <ol>
                         {% for task in tasks %}
                             {% if task.date == tuesday %}
-                                <li>{{ task.name }}</li>
+                                <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
                             {% endif %}
                         {% endfor %}
                     </ol>
@@ -69,7 +69,7 @@
                     <ol>
                         {% for task in tasks %}
                             {% if task.date == wednesday %}
-                                <li>{{ task.name }}</li>
+                                <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
                             {% endif %}
                         {% endfor %}
                     </ol>
@@ -78,7 +78,7 @@
                     <ol>
                         {% for task in tasks %}
                             {% if task.date == thursday %}
-                                <li>{{ task.name }}</li>
+                                <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
                             {% endif %}
                         {% endfor %}
                     </ol>
@@ -87,7 +87,7 @@
                     <ol>
                         {% for task in tasks %}
                             {% if task.date == friday %}
-                                <li>{{ task.name }}</li>
+                                <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
                             {% endif %}
                         {% endfor %}
                     </ol>
@@ -96,7 +96,7 @@
                     <ol>
                         {% for task in tasks %}
                             {% if task.date == saturday %}
-                                <li>{{ task.name }}</li>
+                                <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
                             {% endif %}
                         {% endfor %}
                     </ol>
@@ -105,7 +105,7 @@
                     <ol>
                         {% for task in tasks %}
                             {% if task.date == sunday %}
-                                <li>{{ task.name }}</li>
+                                <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
                             {% endif %}
                         {% endfor %}
                     </ol>
