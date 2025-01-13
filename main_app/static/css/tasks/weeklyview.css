@@ -16,11 +16,24 @@ table {
 
 .date {
     font-size: 1.0rem;
-    color: #666;
+    color: black;
 }
 
 td {
     vertical-align: top;
+    text-align: left;
+}
+
+td ol {
+    padding-left: 0;
+    margin: 0;
+}
+
+td li {
+    margin: 0;
+    padding: 0.5rem 0;
+    font-size: 1.0rem;
+    color: #333;
 }
 
 td p {
