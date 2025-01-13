@@ -17,6 +17,6 @@ urlpatterns = [
     path('tasks/<int:task_id>/associate-tag/<int:tag_id>/', views.associate_tag, name='associate-tag'), 
     path('tasks/<int:task_id>/remove-tag/<int:tag_id>/', views.remove_tag, name='remove-tag'),
     path('accounts/signup/', views.signup, name='signup'), 
-    path('tasks/weeklyview/', views.weekly_view, name="weekly-view" )
+    path('tasks/weeklyview/', views.weekly_view, name='weekly-view' )
     
 ]

@@ -10,6 +10,9 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils import timezone
+from django.utils.dateparse import parse_date
+from datetime import timedelta
 
 
 class Home(LoginView):
@@ -37,6 +40,40 @@ class TaskList(LoginRequiredMixin,ListView):
     # ~ Because we are using tasks ( a custom name for better clarity), we need to specify it
 
     # * extra_context - a simple way to add extra context to the template, usually for static value like a form
+
+def weekly_view(request):
+    
+    now_param = request.GET.get('now')
+    
+    if now_param:
+        selected_date = timezone.datetime.fromisoformat(now_param)
+    
+    else:
+        selected_date = timezone.now()
+        
+    if 'previous' in request.GET:
+        selected_date -= timedelta(days=7)
+    
+    if 'next' in request.GET:
+        selected_date += timedelta(days=7)
+        
+
+    
+    start_of_week = selected_date.date() - timedelta(days=selected_date.weekday()) # * This gets the Monday
+    
+    end_of_week = start_of_week + timedelta(days=6) #* This gets the Sunday
+    
+    tasks_for_week = Task.objects.filter(date__gte=start_of_week, date__lte=end_of_week)
+    
+    print(tasks_for_week)
+    
+    
+    return render(request, 'tasks/weeklyview.html', {
+        'tasks': tasks_for_week, 
+        'week_start': start_of_week,
+        'week_end': end_of_week
+    })
+
 
 
 class TaskDetail(LoginRequiredMixin, DetailView):
@@ -82,10 +119,16 @@ class TagCreate(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
+
 class TagList(LoginRequiredMixin, ListView):
     model = Tag
 
+    
+    
+    
     def get_queryset(self):
+        
+        
         return Tag.objects.filter(user=self.request.user)
 
 

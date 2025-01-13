@@ -16,6 +16,7 @@
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'task-index' %}">All tasks</a></li>
                     <li><a href="{% url 'tag-index' %}">All Tags</a></li>
+                    <li><a href="{% url 'weekly-view' %}">Weekly View</a></li>
                     <li><a href="{% url 'task-create' %}">Add a task</a></li>
                     <li><a href="{% url 'tag-create' %}">Add a Tag</a></li>
                     <li><a href="{% url 'about'%}">About</a></li>
