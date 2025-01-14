@@ -7,6 +7,14 @@
 
 {% block content %}
     <h1>Tasks for the Week: {{ start_of_week|date:'d/m/Y' }} - {{ end_of_week|date:'d/m/Y' }}</h1>
+
+    <h2>Create a New Task</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}  
+        <button type="submit">Create Task</button>
+    </form>
+
     <p>
         <a href="?now={{ prev_week }}">Previous Week</a> |
         <a href="?now={{ current_week }}">Current Week</a> |

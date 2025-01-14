@@ -99,6 +99,8 @@ def weekly_view(request):
     current_week = timezone.now().date().strftime("%Y-%m-%d")
 
     # * strftime("%Y-%m-%d") method is used to convert the date into a string so it can be passed into URLs so now the parse_date can work 
+    
+    form = TaskForm()
 
     return render(
         request,
@@ -117,6 +119,7 @@ def weekly_view(request):
             "prev_week": prev_week,
             "next_week": next_week,
             "current_week": current_week,
+            "form":form
         },
     )
 
