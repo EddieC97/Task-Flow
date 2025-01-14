@@ -3,23 +3,18 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/tasks/weeklyview.css' %}"/>
+    <script defer src="{% static 'js/weeklyview.js' %}"></script> 
 {% endblock %}
 
 {% block content %}
     <h1>Tasks for the Week: {{ start_of_week|date:'d/m/Y' }} - {{ end_of_week|date:'d/m/Y' }}</h1>
-
-    <h2>Create a New Task</h2>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}  
-        <button type="submit">Create Task</button>
-    </form>
 
     <p>
         <a href="?now={{ prev_week }}">Previous Week</a> |
         <a href="?now={{ current_week }}">Current Week</a> |
         <a href="?now={{ next_week }}">Next Week</a>
     </p>
+
     <table>
         <thead>
             <tr>
@@ -63,6 +58,7 @@
                             {% endif %}
                         {% endfor %}
                     </ol>
+                    <button class="show-form-btn" onclick="toggleForm('{{ monday|date:'Y-m-d' }}')">+</button>
                 </td>
                 <td>
                     <ol>
@@ -72,6 +68,7 @@
                             {% endif %}
                         {% endfor %}
                     </ol>
+                    <button class="show-form-btn" onclick="toggleForm('{{ tuesday|date:'Y-m-d' }}')">+</button>
                 </td>
                 <td>
                     <ol>
@@ -81,6 +78,7 @@
                             {% endif %}
                         {% endfor %}
                     </ol>
+                    <button class="show-form-btn" onclick="toggleForm('{{ wednesday|date:'Y-m-d' }}')">+</button>
                 </td>
                 <td>
                     <ol>
@@ -90,6 +88,7 @@
                             {% endif %}
                         {% endfor %}
                     </ol>
+                    <button class="show-form-btn" onclick="toggleForm('{{ thursday|date:'Y-m-d' }}')">+</button>
                 </td>
                 <td>
                     <ol>
@@ -99,6 +98,7 @@
                             {% endif %}
                         {% endfor %}
                     </ol>
+                    <button class="show-form-btn" onclick="toggleForm('{{ friday|date:'Y-m-d' }}')">+</button>
                 </td>
                 <td>
                     <ol>
@@ -108,6 +108,7 @@
                             {% endif %}
                         {% endfor %}
                     </ol>
+                    <button class="show-form-btn" onclick="toggleForm('{{ saturday|date:'Y-m-d' }}')">+</button>
                 </td>
                 <td>
                     <ol>
@@ -117,8 +118,25 @@
                             {% endif %}
                         {% endfor %}
                     </ol>
+                    <button class="show-form-btn" onclick="toggleForm('{{ sunday|date:'Y-m-d' }}')">+</button>
                 </td>
             </tr>
         </tbody>
     </table>
+
+    <div class="form-container" id="task-form" style="display:none;">
+        <h3>Create a Task</h3>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Create Task</button>
+        </form>
+    </div>
+
 {% endblock %}
+
+
+{% comment %} * |date is a filter that convert Django date object into a string   {% endcomment %}
+{% comment %} * we can provide the format such as date:'Y-m-d' or date:'d/m/Y' ordate:'l' (which format the day itself like Monday, Tuesday etc )   {% endcomment %}
+
+{% comment %} ? in the onclick function ,we need to preprocess the Django date object into a string first before passing it into the js function because the js functions that deal with dates typically expect a string for it to work  {% endcomment %}

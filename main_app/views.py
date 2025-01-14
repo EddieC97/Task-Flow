@@ -98,9 +98,18 @@ def weekly_view(request):
     next_week = (start_of_week + timedelta(weeks=1)).strftime("%Y-%m-%d")
     current_week = timezone.now().date().strftime("%Y-%m-%d")
 
-    # * strftime("%Y-%m-%d") method is used to convert the date into a string so it can be passed into URLs so now the parse_date can work 
-    
-    form = TaskForm()
+    # * strftime("%Y-%m-%d") method is used to convert the date into a string so it can be passed into URLs so now the parse_date can work
+
+    if request.method == 'POST':
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            task = form.save(commit=False)
+            task.user = request.user  
+            task.save()
+            return redirect(f"/tasks/weeklyview/?now={task.date}")
+
+    else:
+        form = TaskForm()
 
     return render(
         request,
