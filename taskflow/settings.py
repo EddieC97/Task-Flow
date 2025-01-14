@@ -27,8 +27,14 @@ SECRET_KEY = 'django-insecure-z3bcl57m9(syfwfy0v#a-ooz&v_jy_-7ly+%fm0w_5!@uze-!w
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+# https://docs.djangoproject.com/en/3.0/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
+
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+
+if RENDER_EXTERNAL_HOSTNAME:    
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+
 
 
 # Application definition
@@ -77,6 +83,9 @@ WSGI_APPLICATION = 'taskflow.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+SECRET_KEY = os.environ.get("SECRET_KEY", default="your secret key")
+
+DEBUG = "RENDER" not in os.environ
 
 DATABASES = {
     "default": dj_database_url.config(
