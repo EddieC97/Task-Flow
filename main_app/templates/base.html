@@ -11,6 +11,9 @@
 </head>
 <body>
     <header>
+        <div class="header">
+            <h1 class="brand">Taskflow:Streamline Your Workflow with Taskflow</h1>
+        </div>
         <nav>
             <ul>
                 {% if user.is_authenticated %}
@@ -23,7 +26,7 @@
                     <li>
                         <form method="post" action="{% url 'logout' %}">
                             {% csrf_token %}
-                            <button type="submit">Log out</button>
+                            <button type="submit" class="logout-button">Log out</button>
                         </form>
                     </li>
                 {% else %}
@@ -33,7 +36,13 @@
                 {% endif %}
             </ul>
         </nav>
+        
     </header>
+    {% if user.is_authenticated%}
+            <p>Hey, {{ user.username }}! Let's get things done!</p>
+        {% else %}
+            <p>Welcome to TaskFlow! Please log in or Sign up!</p>
+        {% endif %}
     <main>
         {% block content %}
         {% endblock %}

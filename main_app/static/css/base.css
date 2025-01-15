@@ -1,19 +1,125 @@
-body {
-    background-color: grey;
-}
-
-#logout-form button {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 600;
-    font-size: 16px;
-    background: none;
-    border: none;
-    cursor: pointer;
+* {
+    margin: 0;
     padding: 0;
-    font-family: inherit;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
 }
 
-#logout-form button:hover {
-    color: var(--link-hover-color);
+body {
+    background-color: lightgrey;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 0 10px;
+}
+
+header {
+    background-color: white;
+    color: black;
+    padding: 20px 0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    position: static;
+    z-index: 1000;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 20px 20px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+}
+
+nav ul li a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+nav ul li a:focus {
+    outline: none;
+    border: 2px solid #007bff;
+}
+
+.logout-button {
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+    background: linear-gradient(145deg, #6c7ae0, #3498db);
+    border: none;
+    padding: 20px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logout-button:hover {
+    background: linear-gradient(145deg, #3498db, #6c7ae0);
+}
+
+.logout-button:active {
+    background: linear-gradient(145deg, #6c7ae0, #3498db);
+}
+
+.logout-button:focus {
+    outline: none;
+    border: 2px solid #3498db;
+}
+
+main {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+section, .block {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0056b3;
 }
