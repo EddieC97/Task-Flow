@@ -5,17 +5,19 @@
 {% endblock %}
 {% block content %}
 
-<secttion>
-    <p>Welcome to the home page</p>
-</secttion>
+<section class="welcome">
+    <h1>Welcome to TaskFlow</h1>
+    <p>Your Personal Productivity Hub</p>
+</section>
+
 {% if not user.is_authenticated %}
-<section>
+<section class="login">
     <form action="{% url 'home' %}" method="post">
         <h1>Login</h1>
         {% csrf_token %}
         {{ form.as_p }}
         <input type="hidden" name="next" value="{{next}}"/>
-        <button type="submit">Login</button>
+        <button type="submit" class="submit-button">Login</button>
     </form>
 </section>
 {% endif %}

@@ -1,3 +1,76 @@
 body {
-    background-color: blueviolet;
+    background-color: lightgrey;
+    color: #333;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 0 10px;
+}
+
+.welcome {
+    background-color: #fff;
+    padding: 40px;
+    margin: 20px 0;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.welcome h1 {
+    color: #333;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.welcome p {
+    font-size: 18px;
+    color: #666;
+}
+
+.login {
+    background-color: #fff;
+    padding: 40px;
+    margin: 20px 0;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+form input[type="text"], form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+form button.submit-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button.submit-button:hover {
+    background-color: #2980b9;
+}
+
+form input:focus, form button:focus {
+    outline: none;
+    border-color: #3498db;
 }
