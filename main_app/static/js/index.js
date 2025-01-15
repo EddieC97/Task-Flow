@@ -1,6 +1,6 @@
 function filterTasks() {
 	const searchInput = document.getElementById('searchbar');
-	const query = searchInput.value.toLowerCase()
+	const query = searchInput.value.toLowerCase().replace(' ', '')
 
 	const taskList = document.querySelectorAll('.task-item');
 	const searchResults = document.getElementById('search-results');
@@ -8,7 +8,7 @@ function filterTasks() {
 	const filteredTasks = [];
 
 	taskList.forEach((task) => {
-        const taskName = task.querySelector('h2').textContent.toLowerCase()
+        const taskName = task.querySelector('h2').textContent.toLowerCase().replace(' ','')
         //* I am looking for the text content inside the <h2> which is usually the task.name
         //* textContent then extracts the text inside the <h2> : get a string 
 
@@ -35,3 +35,4 @@ function filterTasks() {
 
 
 // * .include(): I used this instead of === because I am looking for a partial match 
+// * the .replace(' ', ''): basically taking out spaces 
