@@ -2,18 +2,26 @@
 {% load static %}
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/tasks/task-index.css' %}">
+<script defer src="{% static 'js/index.js' %}"></script>
 {% endblock %}
 
 {% block content %}
 <section>
     <h1>All Tasks</h1>
+
+    
     <div>
         {% for task in tasks %}
-        <a href="{% url 'task-detail' task.id %}">
+        <a href="{% url 'task-detail' task.id %}" class="task-item">
             <h2>{{ task.name }}</h2>
         </a>
         {% endfor %}
     </div>
+
+    <input type="text" id="searchbar" placeholder="Search for a specific task here!">
+
+
+
 
     <h1>Create a New Task</h1>
     <form action="{% url 'task-create' %}" method="post" autocomplete="off">
