@@ -1,17 +1,24 @@
+function clearSearchResults() {
+	const searchResults = document.getElementById('search-results');
+
+	searchResults.innerHTML = '';
+	//* this line clears the whole div content in the beginning
+}
+
+// * I moved the searchResults.innerHTML = '' from filterTasks() into another function 
+//! Prior to this, without this function, the searchResult container doesn't get cleared correctly if you press the search button twice without changing the search query 
+// ~ Basically it will get appended twice 
+
 function filterTasks() {
 	const searchInput = document.getElementById('searchbar');
 	const query = searchInput.value.toLowerCase().replace(' ', '');
 
     const taskList = document.querySelectorAll('.task-item'); 
-	const searchResults = document.getElementById('search-results');
-
+    const searchResults = document.getElementById('search-results');
+    
     const filteredTasks = [];
-    
-    
 
-	searchResults.innerHTML = '';
-	//* this line clears the whole div content in the beginning
-
+    
 	taskList.forEach((task) => {
 		const taskName = task
 			.querySelector('h2')
