@@ -5,18 +5,23 @@
 {% endblock %}
 {% block content %}
 
-<section class="card-container">
-    {% for tag in tag_list %}
-        <div class="card" style="border-color: {{ tag.color }}">
-            <div class="card-bg" style="background-color: {{ tag.color }}"></div>
-            <a href="{% url 'tag-detail' tag.id %}">
-                <div class="card-content">
-                    <h2>{{ tag.name }}</h2>
-                    <p>A {{ tag.color }} tag</p>
-                </div>
-            </a>
-        </div>
-    {% endfor %}
-</section>
+<h1 class="underlined-title">All Tags </h1>
+{% if tag_list %}
+    <section class="card-container">
+        {% for tag in tag_list %}
+            <div class="card" style="border-color: {{ tag.color }}">
+                <div class="card-bg" style="background-color: {{ tag.color }}"></div>
+                <a href="{% url 'tag-detail' tag.id %}">
+                    <div class="card-content">
+                        <h2>{{ tag.name }}</h2>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </section>
+{% else %}
+<p>No tags available. You can add new tags by clicking <a href="{% url 'tag-create' %}">here</a>!</p>
+{% endif %}
+
 
 {% endblock %}

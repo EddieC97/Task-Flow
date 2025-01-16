@@ -62,3 +62,13 @@
 .page-header > img:first-of-type {
     margin-left: 15px;
 }
+
+.card:hover {
+    opacity: 0.9;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+
+.underlined-title {
+    text-decoration: underline;
+}
