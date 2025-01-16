@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
 {% endblock %}
 {% block content %}
 
@@ -16,7 +16,7 @@
         <h1>Login</h1>
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="hidden" name="next" value="{{next}}"/>
+        <input type="hidden" name="next" value="{{ next }}"/>
         <button type="submit" class="submit-button">Login</button>
     </form>
 </section>
