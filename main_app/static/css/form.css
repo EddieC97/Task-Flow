@@ -115,14 +115,20 @@ body {
 }
 
 .delete-confirm a {
+    display: inline-block;
+    padding: 1rem 2rem;
     font-size: 2rem;
-    color: #007bff;
+    background-color: #6c757d;
+    color: blue;
+    text-align: center;
     text-decoration: none;
-    margin-right: 2rem;
+    border-radius: 8px;
+    border: 1px solid #5a6268;
+    cursor: pointer;
 }
 
 .delete-confirm a:hover {
-    color: #0056b3;
+    background-color: #5a6268;
 }
 
 .delete-confirm button {
