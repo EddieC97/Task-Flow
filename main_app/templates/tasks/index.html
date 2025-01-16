@@ -7,29 +7,43 @@
 
 {% block content %}
 <section>
-    <h1>All Tasks</h1>
+    <div class="content-container">
+        <div class="tasks-container">
+            <h1>All Tasks</h1>
 
-    
-    <div>
-        {% for task in tasks %}
-        <a href="{% url 'task-detail' task.id %}" class="task-item">
-            <h2>{{ task.name }}</h2>
-        </a>
-        {% endfor %}
+            {% if tasks %}
+                <div class="tasks-list">
+                    {% for task in tasks %}
+                        <a href="{% url 'task-detail' task.id %}" class="task-item">
+                            <h2>{{ task.name }}</h2>
+                        </a>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>No tasks to display.</p>
+            {% endif %}
+        </div>
+
+        <div class="search-container">
+            <h1>Search for Tasks</h1>
+            <div class="search-bar">
+                <input type="text" id="searchbar" placeholder="Search for a specific task here!">
+                <button onclick="clearSearchResults(); filterTasks()" class="search-button">Search</button>
+            </div>
+
+            <h2 class="search-results-title">Search Results:</h2>
+            <div id="search-results" class="search-results">
+            </div>
+        </div>
     </div>
 
-    <input type="text" id="searchbar" placeholder="Search for a specific task here!">
-    <button onclick="clearSearchResults(); filterTasks()">Search</button>
-    <h2>Search Results:</h2>
-    <div id="search-results">
+    <div class="task-creation-container">
+        <h1>Create a New Task</h1>
+        <form action="{% url 'task-create' %}" method="post" autocomplete="off">
+            {% csrf_token %}
+            {{ task_form.as_p }}
+            <button type="submit" class="submit-button">Save Task</button>
+        </form>
     </div>
-
-
-    <h1>Create a New Task</h1>
-    <form action="{% url 'task-create' %}" method="post" autocomplete="off">
-        {% csrf_token %}
-        {{ task_form.as_p }}
-        <button type="submit">Save Task</button>
-    </form>
 </section>
 {% endblock %}
