@@ -15,7 +15,7 @@
         <a href="?now={{ next_week }}">Next Week</a>
     </p>
 
-    <table>
+    <table class="large-table">
         <thead>
             <tr>
                 <th>
@@ -51,74 +51,88 @@
         <tbody>
             <tr>
                 <td>
-                    <ol>
-                        {% for task in tasks %}
-                            {% if task.date == monday %}
-                                <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
-                            {% endif %}
-                        {% endfor %}
-                    </ol>
-                    <button class="show-form-btn" onclick="toggleForm('{{ monday|date:'Y-m-d' }}')">+</button>
+                    <div class="task-list-container">
+                        <ol>
+                            {% for task in tasks %}
+                                {% if task.date == monday %}
+                                    <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ol>
+                        <button class="show-form-btn" onclick="toggleForm('{{ monday|date:'Y-m-d' }}')">+</button>
+                    </div>
                 </td>
                 <td>
-                    <ol>
-                        {% for task in tasks %}
-                            {% if task.date == tuesday %}
-                                <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
-                            {% endif %}
-                        {% endfor %}
-                    </ol>
-                    <button class="show-form-btn" onclick="toggleForm('{{ tuesday|date:'Y-m-d' }}')">+</button>
+                    <div class="task-list-container">
+                        <ol>
+                            {% for task in tasks %}
+                                {% if task.date == tuesday %}
+                                    <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ol>
+                        <button class="show-form-btn" onclick="toggleForm('{{ tuesday|date:'Y-m-d' }}')">+</button>
+                    </div>
                 </td>
                 <td>
-                    <ol>
-                        {% for task in tasks %}
-                            {% if task.date == wednesday %}
-                                <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
-                            {% endif %}
-                        {% endfor %}
-                    </ol>
-                    <button class="show-form-btn" onclick="toggleForm('{{ wednesday|date:'Y-m-d' }}')">+</button>
+                    <div class="task-list-container">
+                        <ol>
+                            {% for task in tasks %}
+                                {% if task.date == wednesday %}
+                                    <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ol>
+                        <button class="show-form-btn" onclick="toggleForm('{{ wednesday|date:'Y-m-d' }}')">+</button>
+                    </div>
                 </td>
                 <td>
-                    <ol>
-                        {% for task in tasks %}
-                            {% if task.date == thursday %}
-                                <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
-                            {% endif %}
-                        {% endfor %}
-                    </ol>
-                    <button class="show-form-btn" onclick="toggleForm('{{ thursday|date:'Y-m-d' }}')">+</button>
+                    <div class="task-list-container">
+                        <ol>
+                            {% for task in tasks %}
+                                {% if task.date == thursday %}
+                                    <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ol>
+                        <button class="show-form-btn" onclick="toggleForm('{{ thursday|date:'Y-m-d' }}')">+</button>
+                    </div>
                 </td>
                 <td>
-                    <ol>
-                        {% for task in tasks %}
-                            {% if task.date == friday %}
-                                <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
-                            {% endif %}
-                        {% endfor %}
-                    </ol>
-                    <button class="show-form-btn" onclick="toggleForm('{{ friday|date:'Y-m-d' }}')">+</button>
+                    <div class="task-list-container">
+                        <ol>
+                            {% for task in tasks %}
+                                {% if task.date == friday %}
+                                    <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ol>
+                        <button class="show-form-btn" onclick="toggleForm('{{ friday|date:'Y-m-d' }}')">+</button>
+                    </div>
                 </td>
                 <td>
-                    <ol>
-                        {% for task in tasks %}
-                            {% if task.date == saturday %}
-                                <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
-                            {% endif %}
-                        {% endfor %}
-                    </ol>
-                    <button class="show-form-btn" onclick="toggleForm('{{ saturday|date:'Y-m-d' }}')">+</button>
+                    <div class="task-list-container">
+                        <ol>
+                            {% for task in tasks %}
+                                {% if task.date == saturday %}
+                                    <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ol>
+                        <button class="show-form-btn" onclick="toggleForm('{{ saturday|date:'Y-m-d' }}')">+</button>
+                    </div>
                 </td>
                 <td>
-                    <ol>
-                        {% for task in tasks %}
-                            {% if task.date == sunday %}
-                                <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
-                            {% endif %}
-                        {% endfor %}
-                    </ol>
-                    <button class="show-form-btn" onclick="toggleForm('{{ sunday|date:'Y-m-d' }}')">+</button>
+                    <div class="task-list-container">
+                        <ol>
+                            {% for task in tasks %}
+                                {% if task.date == sunday %}
+                                    <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ol>
+                        <button class="show-form-btn" onclick="toggleForm('{{ sunday|date:'Y-m-d' }}')">+</button>
+                    </div>
                 </td>
             </tr>
         </tbody>
@@ -134,6 +148,7 @@
     </div>
 
 {% endblock %}
+
 
 
 {% comment %} * |date is a filter that convert Django date object into a string   {% endcomment %}
