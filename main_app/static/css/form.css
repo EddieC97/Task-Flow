@@ -1,7 +1,7 @@
 body {
     background-color: lightgrey;
     color: #333;
-    font-size: 1.125rem;
+    font-size: 2rem;
     line-height: 1.5;
     font-family: 'Times New Roman', Times, serif;
     padding: 0 10px;
@@ -9,10 +9,10 @@ body {
 
 .signup-section {
     background-color: #fff;
-    padding: 3rem 3.75rem;
+    padding: 1rem 5rem;
     border-radius: 8px;
-    max-width: 42rem;
-    margin: 3rem auto;
+    max-width: 120rem;
+    margin: 2rem auto;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -28,7 +28,7 @@ body {
 }
 
 .signup-section p {
-    font-size: 1.125rem;
+    font-size: 2rem;
     color: #555;
 }
 
@@ -38,7 +38,7 @@ body {
     padding: 1rem;
     border-radius: 5px;
     margin-bottom: 1.5rem;
-    font-size: 1rem;
+    font-size: 2rem;
 }
 
 .signup-form {
@@ -51,7 +51,7 @@ body {
 .signup-form select,
 .signup-form textarea {
     padding: 1rem;
-    font-size: 1.125rem;
+    font-size: 2rem;
     border: 1px solid #ddd;
     border-radius: 4px;
     margin-bottom: 1.5rem;
@@ -66,7 +66,7 @@ body {
 
 .submit-btn {
     padding: 1rem 1.5rem;
-    font-size: 1.125rem;
+    font-size: 2rem;
     background-color: #007bff;
     color: #fff;
     border: none;
