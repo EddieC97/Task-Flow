@@ -7,35 +7,30 @@
 
 {% block content %}
   <section>
-    <h1>{{ task.name }}</h1>
+    <h1 class="task-name">{{ task.name }}</h1>
     <div>
-      <h2><strong>Description:</strong> {{ task.description }}</h2>
-      <h2><strong>Date Assigned:</strong> {{ task.date }}</h2>
-      <h2><strong>Duration:</strong> {{ task.duration }} minutes</h2>
-      <h2><strong>Progress:</strong> {{ task.get_progress_display }}</h2>
-      <div>
+      <h2 class="task-description"><strong>Description:</strong> {{ task.description }}</h2>
+      <h2 class="task-date"><strong>Date Assigned:</strong> {{ task.date|date:"d/m/Y" }}</h2>
+      <h2 class="task-duration"><strong>Duration:</strong> {{ task.duration }} minutes</h2>
+      <h2 class="task-progress"><strong>Progress:</strong> {{ task.get_progress_display }}</h2>
+      <div class="task-actions">
         <a href="{% url 'task-update' task.id %}">Edit</a>
         <a href="{% url 'task-delete' task.id %}">Delete</a>
       </div>
     </div>
   </section>
 
-  <section>
+  <section class="task-tags">
+    <h2 class="tags-header">Tags</h2>
     <div>
-      <h2>Tags</h2>
-    </div>
-    <h3>{{ task.name }}'s Tags</h3>
-    <div>
+      <h3 class="assigned-tags-header">Assigned Tags</h3>
       {% if task.tags.count %}
         {% for tag in task.tags.all %}
-          <div>
-            <div style="background-color: {{ tag.color }}"></div>
-            <a href="{% url 'tag-detail' tag.id %}">
-              <p>{{ tag.color }} {{ tag.name }}</p>
-            </a>
+          <div class="tag-item">
+            <span class="tag-name" style="background-color: {{ tag.color }}">{{ tag.name }}</span>
             <form action="{% url 'remove-tag' task.id tag.id %}" method="post">
               {% csrf_token %}
-              <button type="submit">Remove Tag</button>
+              <button type="submit" class="remove-tag">Remove Tag</button>
             </form>
           </div>
         {% endfor %}
@@ -44,18 +39,15 @@
       {% endif %}
     </div>
 
-    <h3>Available Tags</h3>
+    <h3 class="available-tags-header">Available Tags</h3>
     <div>
       {% if tags %}
         {% for tag in tags %}
-          <div>
-            <div style="background-color: {{ tag.color }}"></div>
-            <a href="{% url 'tag-detail' tag.id %}">
-              <p>{{ tag.color }} {{ tag.name }}</p>
-            </a>
+          <div class="tag-item">
+            <span class="tag-name" style="background-color: {{ tag.color }}">{{ tag.name }}</span>
             <form action="{% url 'associate-tag' task.id tag.id %}" method="post">
               {% csrf_token %}
-              <button type="submit">Give Tag</button>
+              <button type="submit" class="assign-tag">Give Tag</button>
             </form>
           </div>
         {% endfor %}

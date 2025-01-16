@@ -1,3 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
 body {
-    background-color: lightblue;
+    background-color: lightgrey;
+    color: #333;
+    font-size: 2rem;
+    line-height: 1.5;
+    padding: 0 1rem;
+}
+
+section {
+    width: 100%;
+    max-width: 75rem;
+    margin: 3rem auto;
+    padding: 2rem;
+}
+
+.task-details {
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.task-details h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.task-details h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.task-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.task-actions a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 1.6rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.25rem;
+    background-color: #f1f1f1;
+    text-align: center;
+}
+
+.task-actions a:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.task-tags {
+    margin-top: 3rem;
+}
+
+.task-tags h2 {
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.task-tags h3 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.task-name, .tags-header, .assigned-tags-header, .available-tags-header {
+    text-decoration: underline;
+}
+
+.tag-item {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    background-color: #f1f1f1;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 1.6rem;
+    margin-right: 1rem;
+}
+
+.tag-item .tag-name {
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    margin-right: 0.75rem;
+    font-weight: bold;
+}
+
+.remove-tag {
+    background-color: red;
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+.remove-tag:hover {
+    background-color: darkred;
+}
+
+.assign-tag {
+    background-color: #007bff;
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+.assign-tag:hover {
+    background-color: darkblue;
+}
+
+.assigned-tags .remove-tag {
+    background-color: red;
+}
+
+.assigned-tags .remove-tag:hover {
+    background-color: darkred;
+}
+
+.available-tags .assign-tag {
+    background-color: green;
+}
+
+.available-tags .assign-tag:hover {
+    background-color: darkgreen;
 }
