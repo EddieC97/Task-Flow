@@ -5,14 +5,14 @@
 {% endblock  %}
 
 {% block content %}
-<div>
+<div class="task-create">
     {% if object %}
         <h1>Edit {{object.name}}</h1>
     {% else %}
         <h1>Add a Tag</h1>
     {% endif %}
 </div>
-<form action="" method="post" autocomplete="off">
+<form action="" method="post" autocomplete="off" class="tag-create-form">
     {% csrf_token %}
     <table>
         {{ form.as_table }}
