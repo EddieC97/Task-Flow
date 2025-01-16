@@ -55,7 +55,9 @@
                         <ol>
                             {% for task in tasks %}
                                 {% if task.date == monday %}
-                                    <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
+                                    <li class="task-container">
+                                        <a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a>
+                                    </li>
                                 {% endif %}
                             {% endfor %}
                         </ol>
@@ -67,7 +69,9 @@
                         <ol>
                             {% for task in tasks %}
                                 {% if task.date == tuesday %}
-                                    <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
+                                    <li class="task-container">
+                                        <a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a>
+                                    </li>
                                 {% endif %}
                             {% endfor %}
                         </ol>
@@ -79,7 +83,9 @@
                         <ol>
                             {% for task in tasks %}
                                 {% if task.date == wednesday %}
-                                    <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
+                                    <li class="task-container">
+                                        <a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a>
+                                    </li>
                                 {% endif %}
                             {% endfor %}
                         </ol>
@@ -91,7 +97,9 @@
                         <ol>
                             {% for task in tasks %}
                                 {% if task.date == thursday %}
-                                    <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
+                                    <li class="task-container">
+                                        <a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a>
+                                    </li>
                                 {% endif %}
                             {% endfor %}
                         </ol>
@@ -103,7 +111,9 @@
                         <ol>
                             {% for task in tasks %}
                                 {% if task.date == friday %}
-                                    <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
+                                    <li class="task-container">
+                                        <a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a>
+                                    </li>
                                 {% endif %}
                             {% endfor %}
                         </ol>
@@ -115,7 +125,9 @@
                         <ol>
                             {% for task in tasks %}
                                 {% if task.date == saturday %}
-                                    <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
+                                    <li class="task-container">
+                                        <a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a>
+                                    </li>
                                 {% endif %}
                             {% endfor %}
                         </ol>
@@ -127,7 +139,9 @@
                         <ol>
                             {% for task in tasks %}
                                 {% if task.date == sunday %}
-                                    <li><a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a></li>
+                                    <li class="task-container">
+                                        <a href="{% url 'task-detail' pk=task.pk %}">{{ task.name }}</a>
+                                    </li>
                                 {% endif %}
                             {% endfor %}
                         </ol>
@@ -148,6 +162,7 @@
     </div>
 
 {% endblock %}
+
 
 
 

@@ -4,10 +4,14 @@ body, html {
 }
 
 .large-table {
-    width: 100%;
+    width: 150%;
     height: 45vh;
     border-collapse: collapse;
     font-size: 2rem;
+    table-layout:fixed
+}
+main {
+    margin-left: 5%;
 }
 
 .large-table th, .large-table td {
@@ -106,3 +110,27 @@ body, html {
     font-size: 2rem;
 }
 
+.task-container {
+    border: 2px solid black;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    padding: 15px;
+    background-color: #f4f4f4;
+}
+
+.task-container a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: #333;
+    font-size: 2rem;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.task-container a:hover {
+    background-color: #4CAF50;
+    color: white;
+}
