@@ -19,7 +19,7 @@
     <a href="{% url 'tag-update' tag.id %}" class="btn warn">Edit</a>
     <form action="{% url 'tag-delete' tag.id %}" method="post" style="display:inline;">
         {% csrf_token %}
-        <button type="submit" class="btn danger">Delete</button>
+    <a href="{% url 'tag-delete' tag.id %}" class="btn danger">Delete</a>
     </form>
 </div>
 {% endblock %}
