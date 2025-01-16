@@ -39,9 +39,9 @@
         
     </header>
     {% if user.is_authenticated%}
-            <p>Hey, {{ user.username }}! Let's get things done!</p>
+            <p class="welcome-message">Hey, {{ user.username }}! Let's get things done!</p>
         {% else %}
-            <p>Welcome to TaskFlow! Please log in or Sign up!</p>
+            <p class="welcome-message">Welcome to TaskFlow! Please log in or Sign up!</p>
         {% endif %}
     <main>
         {% block content %}
