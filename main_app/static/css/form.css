@@ -16,18 +16,18 @@ body {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-.signup-section div {
+.signup-section-div {
     text-align: center;
     margin-bottom: 2rem;
 }
 
-.signup-section h1 {
+.signup-section-h1 {
     font-size: 2rem;
     font-weight: bold;
     color: #333;
 }
 
-.signup-section p {
+.signup-section-p {
     font-size: 2rem;
     color: #555;
 }
@@ -47,9 +47,9 @@ body {
     gap: 1.5rem;
 }
 
-.signup-form input,
-.signup-form select,
-.signup-form textarea {
+.signup-form-input,
+.signup-form-select,
+.signup-form-textarea {
     padding: 1rem;
     font-size: 2rem;
     border: 1px solid #ddd;
@@ -57,9 +57,9 @@ body {
     margin-bottom: 1.5rem;
 }
 
-.signup-form input:focus,
-.signup-form select:focus,
-.signup-form textarea:focus {
+.signup-form-input:focus,
+.signup-form-select:focus,
+.signup-form-textarea:focus {
     border-color: #007bff;
     outline: none;
 }
