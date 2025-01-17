@@ -9,6 +9,7 @@ urlpatterns = [
     path('tasks/create/', views.TaskCreate.as_view(), name='task-create'),
     path('tasks/<int:pk>/update/', views.TaskUpdate.as_view(), name='task-update'), 
     path('tasks/<int:pk>/delete/', views.TaskDelete.as_view(), name='task-delete'), 
+    path('tasks/weeklyview/', views.weekly_view, name='weekly-view' ),
     path('tags/create/', views.TagCreate.as_view(), name='tag-create'),
     path('tags/', views.TagList.as_view(), name='tag-index'),
     path('tags/<int:pk>/', views.TagDetail.as_view(), name='tag-detail'),
@@ -17,6 +18,5 @@ urlpatterns = [
     path('tasks/<int:task_id>/associate-tag/<int:tag_id>/', views.associate_tag, name='associate-tag'), 
     path('tasks/<int:task_id>/remove-tag/<int:tag_id>/', views.remove_tag, name='remove-tag'),
     path('accounts/signup/', views.signup, name='signup'), 
-    path('tasks/weeklyview/', views.weekly_view, name='weekly-view' )
     
 ]

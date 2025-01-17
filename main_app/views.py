@@ -91,7 +91,7 @@ def weekly_view(request):
     saturday = monday + timedelta(days=5)
     sunday = monday + timedelta(days=6)
 
-    # * This just gets tasks for the week based on the start and end of the week
+    # * This just gets tasks for the week based on the start, end of the week and by user
     tasks_for_week = Task.objects.filter(user=request.user, date__gte=start_of_week, date__lte=end_of_week)
 
     prev_week = (start_of_week - timedelta(weeks=1)).strftime("%Y-%m-%d")
@@ -107,7 +107,6 @@ def weekly_view(request):
             task.user = request.user  
             task.save()
             return redirect(f"/tasks/weeklyview/?now={task.date}")
-
 
     else:
         form = TaskForm()

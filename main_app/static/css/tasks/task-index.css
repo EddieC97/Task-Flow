@@ -96,8 +96,6 @@ h2.search-results-title {
     outline: none;
 }
 
-
-
 .search-button {
     background: linear-gradient(145deg, Slateblue, dodgerblue);
     border: none;
@@ -114,7 +112,6 @@ h2.search-results-title {
     background: linear-gradient(145deg, dodgerblue, Slateblue);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
-
 
 .tasks-container,
 .search-container {
@@ -156,7 +153,6 @@ h2.search-results-title {
     background: linear-gradient(145deg, dodgerblue, Slateblue);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
-
 
 .task-creation-container form input,
 .task-creation-container form textarea,

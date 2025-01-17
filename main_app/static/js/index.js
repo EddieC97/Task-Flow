@@ -1,7 +1,7 @@
 function clearSearchResults() {
-	const searchResults = document.getElementById('search-results');
+	const searchResultsEl = document.getElementById('search-results');
 
-	searchResults.innerHTML = '';
+	searchResultsEl.innerHTML = '';
 	//* this line clears the whole div content in the beginning
 }
 
@@ -10,11 +10,11 @@ function clearSearchResults() {
 // ~ Basically it will get appended twice 
 
 function filterTasks() {
-	const searchInput = document.getElementById('searchbar');
-	const query = searchInput.value.toLowerCase().trim();
+	const searchInputEl = document.getElementById('searchbar');
+	const query = searchInputEl.value.toLowerCase().trim();
 
     const taskList = document.querySelectorAll('.task-item'); 
-    const searchResults = document.getElementById('search-results');
+    const searchResultsEl = document.getElementById('search-results');
     
     const filteredTasks = [];
 
@@ -35,7 +35,7 @@ function filterTasks() {
 	if (filteredTasks.length > 0) {
         filteredTasks.forEach((task) => {
             const cloneTask = task.cloneNode(true)
-			searchResults.appendChild(cloneTask);
+			searchResultsEl.appendChild(cloneTask);
 		});
         // * the task elements in the filteredTasks are not just plain string but are actually DOM elements: in our case <a> tag
         // * in this case, we need to copy the task because I am directly manipulating the DOM
@@ -46,7 +46,7 @@ function filterTasks() {
 		//* this creates a <p> element
 		noTasksFoundMessage.textContent =
 			'No tasks found matching your query.';
-		searchResults.appendChild(noTasksFoundMessage);
+		searchResultsEl.appendChild(noTasksFoundMessage);
 	}
 }
 

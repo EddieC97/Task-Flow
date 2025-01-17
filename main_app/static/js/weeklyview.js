@@ -1,18 +1,18 @@
 function toggleForm(date) {
-	const formContainer = document.getElementById('task-form');
-	const nameInput = document.querySelector("input[name='name']");
-    const dateInput = document.querySelector("input[name='date']");
+	const formContainerEl = document.getElementById('task-form');
+	const nameInputEl = document.querySelector("input[name='name']");
+    const dateInputEl = document.querySelector("input[name='date']");
     
-	if (formContainer.style.display === 'none') {
-		formContainer.style.display = 'block';
-        dateInput.value = date;
+	if (formContainerEl.style.display === 'none') {
+		formContainerEl.style.display = 'block';
+        dateInputEl.value = date;
         
 	} else {
-		formContainer.style.display = 'none';
-		dateInput.value = '';
+		formContainerEl.style.display = 'none';
+		dateInputEl.value = '';
 	}
 
-	nameInput.focus()
+	nameInputEl.focus()
     
 }
 
