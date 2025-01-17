@@ -1,6 +1,6 @@
 function toggleForm(date) {
 	const formContainer = document.getElementById('task-form');
-	
+	const nameInput = document.querySelector("input[name='name']");
     const dateInput = document.querySelector("input[name='date']");
     
 	if (formContainer.style.display === 'none') {
@@ -11,6 +11,8 @@ function toggleForm(date) {
 		formContainer.style.display = 'none';
 		dateInput.value = '';
 	}
+
+	nameInput.focus()
     
 }
 

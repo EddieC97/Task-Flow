@@ -108,6 +108,7 @@ def weekly_view(request):
             task.save()
             return redirect(f"/tasks/weeklyview/?now={task.date}")
 
+
     else:
         form = TaskForm()
 

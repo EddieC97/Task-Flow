@@ -15,7 +15,8 @@ class TaskForm(forms.ModelForm):
             )
         }
     duration = forms.IntegerField(
-        label="Duration(minutes)"
+        label="Duration(minutes)",
+        min_value=1
     )
 # * forms.py handles the logic, validation, field customization and widgets
 
