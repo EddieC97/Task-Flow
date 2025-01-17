@@ -41,7 +41,7 @@ class TaskList(LoginRequiredMixin,ListView):
 
     # * extra_context - a simple way to add extra context to the template, usually for static value like a form
 
-
+@login_required
 def weekly_view(request):
 
     now_param = request.GET.get("now")
@@ -92,7 +92,7 @@ def weekly_view(request):
     sunday = monday + timedelta(days=6)
 
     # * This just gets tasks for the week based on the start and end of the week
-    tasks_for_week = Task.objects.filter(date__gte=start_of_week, date__lte=end_of_week)
+    tasks_for_week = Task.objects.filter(user=request.user, date__gte=start_of_week, date__lte=end_of_week)
 
     prev_week = (start_of_week - timedelta(weeks=1)).strftime("%Y-%m-%d")
     next_week = (start_of_week + timedelta(weeks=1)).strftime("%Y-%m-%d")
