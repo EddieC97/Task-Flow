@@ -137,6 +137,9 @@ class TaskDetail(LoginRequiredMixin, DetailView):
     model = Task
     template_name = "tasks/detail.html"
     context_object_name = "task"
+    
+    def get_queryset(self):
+        return Task.objects.filter(user=self.request.user)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -161,10 +164,16 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
     form_class = TaskForm
 
+    def get_queryset(self):
+        return Task.objects.filter(user=self.request.user)
+
 
 class TaskDelete(LoginRequiredMixin, DeleteView):
     model = Task
     success_url = "/tasks/"
+
+    def get_queryset(self):
+        return Task.objects.filter(user=self.request.user)
 
 
 class TagCreate(LoginRequiredMixin, CreateView):
@@ -179,12 +188,7 @@ class TagCreate(LoginRequiredMixin, CreateView):
 class TagList(LoginRequiredMixin, ListView):
     model = Tag
 
-    
-    
-    
     def get_queryset(self):
-        
-        
         return Tag.objects.filter(user=self.request.user)
 
 
@@ -240,10 +244,6 @@ def signup(request):
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'signup.html', context)
-
-    # TODO
-    # TODO 2. try-catch block for better error handling
-    # TODO stretch: implement MCdatepicker
 
 
 # * form_class - telling Django to use the custom TaskForm defined in forms.py instead of the default
