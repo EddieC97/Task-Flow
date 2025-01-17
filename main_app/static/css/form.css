@@ -107,6 +107,16 @@ body {
 }
 
 
+.task-form .errorlist{
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    list-style-type: none;
+}
+
 .delete-confirm h2 {
     font-size: 2rem;
     font-weight: bold;

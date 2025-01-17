@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User 
+from django.core.validators import MinValueValidator
 
 COLOR_CHOICES = (
     ("#FFFFFF", "White"),
@@ -43,7 +44,9 @@ class Task(models.Model):
     name = models.CharField(max_length=250)
     description = models.TextField(max_length=250)
     date= models.DateField()
-    duration= models.IntegerField()
+    duration= models.IntegerField(
+        validators = [MinValueValidator(1, message="Duration must be at least 1.")]
+        )
     progress=  models.CharField(max_length=2, choices=STATUS, default=STATUS[0][0])
     tags = models.ManyToManyField(Tag)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
