@@ -5,16 +5,16 @@ from django.core.validators import MinValueValidator
 
 COLOR_CHOICES = (
     ("#FFFFFF", "White"),
-    ("#FF5733", "Red"),
+    ("#FF0000", "Red"),
     ("#FF8C00", "Orange"),
-    ("#FFD700", "Yellow"),
-    ("#4CAF50", "Green"),
+    ("#FFFF00", "Yellow"),
+    ("#00FF00", "Green"),
     ("#2196F3", "Blue"),
     ("#9C27B0", "Purple"),
     ("#E91E63", "Pink"),
     ("#00BCD4", "Cyan"),
     ("#3F51B5", "Indigo"),
-    ("#FFEB3B", "Lime"),
+    ("#32CD32", "Lime"),
 )
 
 
