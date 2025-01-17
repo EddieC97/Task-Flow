@@ -58,7 +58,7 @@ main {
     display: inline-block;
     padding: 8px 16px;
     font-size: var(--font-reg);
-    color: #fff;
+    color: white;
     text-align: center;
     border-radius: 4px;
     text-decoration: none;
@@ -69,20 +69,20 @@ main {
 }
 
 .btn.warn {
-    background-color: #3498db;
-    border: 1px solid #2980b9;
+    background-color: dodgerblue;
+    border: 1px solid black;
 }
 
 .btn.warn:hover {
-    background-color: #2980b9;
+    background-color: royalblue;
 }
 
 .btn.danger {
-    background-color: #e74c3c;
-    border: 1px solid #c0392b;
+    background-color: crimson;
+    border: 1px solid black;
 }
 
 .btn.danger:hover {
-    background-color: #c0392b;
+    background-color: darkred;
 }
 
