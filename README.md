@@ -32,7 +32,10 @@ I currently use Notion as my weekly task manager. While Notion is powerful, it c
 ## Technology Used: 
 **JavaScript**\
 **CSS**\
+**HTML**\
+**Python**\
 **Django**\
+**PostgreSQL**\
 **psycopg2-binary**\
 **dj-database-url**\
 **Gunicorn**\
